@@ -1,25 +1,28 @@
-#!/usr/bin/env bash        
+#!/usr/bin/env bash
 
-pattern=$1                 
-if [[ -z "$pattern" ]]     
+pattern=$1
+
+if [[ -z "$pattern" ]]
     then
         echo "Please provide a pattern to match against"
-	exit 0
+        exit 0
 fi 
 
 for file in * ;do
     if [[ -d "$file" ]] 
-	then
-	    continue
-	fi
+        then
+            continue
+    fi
 
-	grep -l "$pattern" "$file"
+    grep -l "$pattern" "$file"
 
 done
 
 for directory in */; do
-	if [[ -e "$directory" ]]
-	    then
-	        grep -r "$pattern" "$directory" 
-	fi
+    if [[ -e "$directory" ]]
+        then
+            grep -r "$pattern" "$directory"
+    fi
 done
+
+
